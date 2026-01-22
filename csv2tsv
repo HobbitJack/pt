@@ -1,0 +1,12 @@
+#!/bin/sh
+
+# stolen from https://serverfault.com/questions/1184277/remove-commas-in-double-quotes-from-csv
+# used CC-BY-SA 4.0; answer by user Esa Jokinen
+awk 'BEGIN { FS="\""; OFS="" }
+{
+    for (i = 2; i <= NF; i += 2) {
+        gsub(/ *, */," ",$i)  # Collapse comma-space patterns to single space
+    }
+    for (i = 1; i <= NF; i++) printf "%s", $i;
+    print "" 
+}' <${1:-/dev/stdin} | tr ',' '\t'

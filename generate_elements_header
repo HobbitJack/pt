@@ -1,0 +1,23 @@
+#!/usr/bin/sh
+
+TMP=$(mktemp)
+cut -f1,3,4,5,7,9,12,14,18,23,25,26 ${1:-/dev/stdin} >$TMP
+
+cut -f1 $TMP  | sed 's/^/"/' | sed 's/$/"/' > name
+cut -f2 $TMP  > mass
+cut -f3 $TMP  > boil
+cut -f4 $TMP  | sed 's/^/"/' | sed 's/$/"/' | sed -E "s/[[:alnum:]_'-]+/\u&/g" > type
+cut -f5 $TMP  > density
+cut -f6 $TMP  > melt
+cut -f7 $TMP  > number
+cut -f8 $TMP  | sed 's/^/"/' | sed 's/$/"/' > phase
+cut -f9 $TMP  | sed 's/^/"/' | sed 's/$/"/' > symbol
+cut -f10 $TMP | sed 's/^/"/' | sed 's/$/"/' > electron_config
+cut -f11 $TMP > electronegativity
+cut -f12 $TMP | sed -E 's/\[([[:digit:].]+)( [[:digit:].]+)*\]/\1/' > ionization
+
+echo '{'
+paste symbol number name mass density type phase melt boil ionization electronegativity electron_config | tail -n+2 | sed 's/\t/, /g' | sed 's/^/\t\{ /' | sed 's/$/ \},/' | head -n-1 | sed 's/null/-1/g' | sed 's/\[\]/-1/g'
+echo '};'
+
+rm symbol number name mass density type phase melt boil ionization electronegativity electron_config $TMP
