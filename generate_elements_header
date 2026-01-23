@@ -6,7 +6,7 @@ cut -f1,3,4,5,7,9,12,14,18,23,25,26 ${1:-/dev/stdin} >$TMP
 cut -f1 $TMP  | sed 's/^/"/' | sed 's/$/"/' > name
 cut -f2 $TMP  > mass
 cut -f3 $TMP  > boil
-cut -f4 $TMP  | sed 's/^/"/' | sed 's/$/"/' | sed -E "s/[[:alnum:]_'-]+/\u&/g" > type
+cut -f4 $TMP  | sed 's/^/"/' | sed 's/$/"/' | sed -E "s/[[:alnum:]_'-]+/\u&/g" > type #Stéphane Chazelas on StackExchange, https://unix.stackexchange.com/questions/554901/how-to-change-any-text-to-proper-case-and-sentence-case-using-tr; used CC-BY-SA 4.0
 cut -f5 $TMP  > density
 cut -f6 $TMP  > melt
 cut -f7 $TMP  > number
