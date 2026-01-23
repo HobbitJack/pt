@@ -19,7 +19,6 @@ struct data_t
 parse_data_options()
 {
 	struct data_t data;
-
 	
 	data.symbol = args.symbol_given || args.all_given;
 	if (data.symbol && !data.first)
@@ -181,7 +180,7 @@ main(int argc, char *argv[])
 
 	if (!args.inputs_num)
 	{
-		print_table();
+		print_table(!args.no_header_given);
 	}
 	else
 	{

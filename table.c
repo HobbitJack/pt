@@ -10,11 +10,11 @@
 #include "table.h"
 
 int
-print_period(int element, int period, int cutout)
+print_period(int element, int period, int cutout, int header)
 {
 	int group;
 
-	if (!args.no_header_given)
+	if (header)
 		printf("%d ", period);
 	
 	for (group=1; group<=18; group++)
@@ -29,7 +29,7 @@ print_period(int element, int period, int cutout)
 			}
 			else
 			{
-				if (args.no_header_given && (group == 1))
+				if (!header && (group == 1))
 					printf("%-2s", elements[element++].symbol);
 				else
 					printf("  %-2s", elements[element++].symbol);
@@ -45,13 +45,14 @@ print_period(int element, int period, int cutout)
 }
 
 void
-print_table()
+print_table(int header)
 {
-  int i, j;
+	int i, j;
 	int group, element, period;
 
-	if (!args.no_header_given)
+	if (header)
 	{
+		fprintf(stderr, "huh?\n");
 		fputs("  ", stdout);
 		for (group = 1; group<=18; group++)
 			if (group) printf("  %-2d", group);
@@ -61,13 +62,13 @@ print_table()
 	element = 0;
 
 	for (period=1; period<=7; period++)
-		element = print_period(element, period, period>=6 ? period-5 : 0);
+	  element = print_period(element, period, period>=6 ? period-5 : 0, header);
 
 	i = 56;
 	j = 0;
 	while (i<102)
 	{
-		if (!args.no_header_given)
+		if (header)
 			fputs("    ", stdout);
 		fputs("      ", stdout);
 		for (element = i; element <= i+13; element++)

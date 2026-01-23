@@ -1,2 +1,2 @@
-int print_period(int element, int period, int cutout);
-void print_table();
+int print_period(int element, int period, int cutout, int header);
+void print_table(int header);
