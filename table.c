@@ -52,7 +52,6 @@ print_table(int header)
 
 	if (header)
 	{
-		fprintf(stderr, "huh?\n");
 		fputs("  ", stdout);
 		for (group = 1; group<=18; group++)
 			if (group) printf("  %-2d", group);
