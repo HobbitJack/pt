@@ -79,7 +79,7 @@ parse_element(int token, char *text)
 	{
 		case 0:
 			errno = 0;
-			element = strtol(text, &endptr, 10);
+			element = strtol(text, &endptr, 10)-1;
 			if ((*endptr != '\0' || errno) || ((element < 1) || (element > ELEMENTS)))
 			{
 				if (!args.silent_given)
