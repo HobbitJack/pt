@@ -32,13 +32,13 @@ clean:
 
 source:
 	rm -f pt_source.tar.gz
-	tar -cf pt_source.tar *.c *.h pt.g pt.l pt.1 csv2tsv makefile
+	tar -cf pt_source.tar *.c *.h pt.g pt.l pt.1 csv2tsv makefile COPYING
 	gzip pt_source.tar
 
 release:	pt
 	rm -f pt.tar.gz
 	sed 6,43d makefile | sed '2c .PHONY:	install uninstall'> Makefile
-	tar -cf pt.tar pt pt.1 Makefile
+	tar -cf pt.tar pt pt.1 Makefile COPYING
 	gzip pt.tar
 
 install:	pt
