@@ -79,13 +79,14 @@ parse_element(int token, char *text)
 	{
 		case 0:
 			errno = 0;
-			element = strtol(text, &endptr, 10)-1;
+			element = strtol(text, &endptr, 10);
 			if ((*endptr != '\0' || errno) || ((element < 1) || (element > ELEMENTS)))
 			{
 				if (!args.silent_given)
 					fprintf(stderr, "%s: %s: Bad argument\n", progname, text);	
 				element = -1;
 			}
+			element--;
 			break;
 		case 1:
 			for (element=0; element < ELEMENTS; element++)
