@@ -13,8 +13,10 @@ pt \- Periodic table
 .B pt
 is a utility to interface data about the chemical elements.
 Given \fIELEMENT\fR, print configurable information about the physical properties of  that \fIELEMENT\fR, such as atomic mass, phase at STP, or the first ionization energy.
-If no ELEMENT given, print periodic table.
-If ELEMENT is '\-', read standard input.
+\fIELEMENT\fR may be given as an integer atomic number, two-letter IUPAC symbol, or full element name.
+.PP
+If no \fIELEMENT\fR given, print periodic table.
+If \fIELEMENT\fR is '\-', read elements from standard input.
 .SH OPTIONS
 Mandatory options to long options are mandatory for short options too.
 .SS "GENERAL OPTIONS"
