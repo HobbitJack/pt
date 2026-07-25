@@ -61,8 +61,10 @@ print_table(int header)
 	element = 0;
 
 	for (period=1; period<=7; period++)
-	  element = print_period(element, period, period>=6 ? period-5 : 0, header);
+		element = print_period(element, period, period>=6 ? period-5 : 0, header);
 
+	putchar('\n');
+	
 	i = 56;
 	j = 0;
 	while (i<102)
