@@ -28,7 +28,7 @@ elements.csv:
 	curl -o elements.csv 'https://raw.githubusercontent.com/dedolist/open-data/refs/heads/master/data/science/periodic-table-detailed/data.csv'
 
 clean:
-	rm -f pt elements.h pt.g.? pt.l.? pt*.tar.gz pt.1.gz Makefile
+	rm -f pt elements.h elements.?sv pt.g.? pt.l.? pt*.tar.gz pt.1.gz Makefile
 
 source:
 	rm -f pt_source.tar.gz
