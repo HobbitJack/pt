@@ -158,9 +158,23 @@ read_args(int argc, char *argv[], struct data_t data)
 	return;
 }
 
+void
+read_dump(struct data_t data)
+{
+	int i;
+
+	for (i=0; i<=117; i++)
+		print_element(i, data);
+
+	return;
+}
+
+
 int
 main(int argc, char *argv[])
 {
+	int i;
+	int els[118];
 	struct data_t data;
 
 	progname = basename(argv[0]);
@@ -179,13 +193,21 @@ main(int argc, char *argv[])
 		return 0;
 	}
 
+	if (args.dump_given)
+	{
+		data = parse_data_options();
+		if (!args.no_header_given)
+			print_header(data);
+		read_dump(data);
+		return 0;
+	}
+	
 	if (!args.inputs_num)
 	{
 		print_table(!args.no_header_given);
 	}
 	else
 	{
-		data = parse_data_options();
 		if (!args.no_header_given)
 			print_header(data);
 		if (!strcmp(args.inputs[0], "-"))

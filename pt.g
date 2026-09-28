@@ -1,7 +1,7 @@
 args	"-F pt -c g.c -H g.h -uELEMENT --func-name ggo --show-required --default-optional --no-help --no-version -G"
 
 package "pt"
-version "1.0.0"
+version "1.1.0"
 
 description	"Print information about the chemical elements.\nIf no ELEMENT given, print periodic table.\nIf ELEMENT is '-', read standard input.\nSpecify element as atomic number, symbol, or full name."
 
@@ -21,8 +21,9 @@ option	"melting-point" m	"Element melting point at standard pressure"
 option	"boiling-point" M	"Element boiling point at standard pressure"
 option	"ionization"	i	"First ionization energy"
 option	"electronegativity" e	"Element electronegativity"
-option  "electron-configuration" c "Short atomic electron configuration"
-option  "all"   -   "All information enabled"
+option	"electron-configuration" c "Short atomic electron configuration"
+option	"all"   -   "All information enabled"
+option	"dump"  -   "Dump information for all elements"
 text	"Information is output in the order the options are given here."
 section	"Getting help"
 option	"help" h "Print this help message and exit"
